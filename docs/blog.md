@@ -1,4 +1,26 @@
-# Notes from the Keyboard
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>About Me - [name] </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../docs/css/style.css" rel="stylesheet">
+</head><body>
+    <div class="container">
+      <div class="row">
+        <h1>Say hello to my little blog!</h1>
+      </div>
+      <div class="row">
+          <div class="col">
+              <ol class="list-unstyled">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="blog.md">Blog</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+              </ol>
+          </div>
+          <div class="col-sm-8">  # Notes from the Keyboard
 
 ## June 23 
 So I installed ubuntu on my chromebook in a separate partition. Followed instructions from the unbuntu site [here](https://ubuntu.com/tutorials/install-ubuntu-on-chromebook#1-overview). git wasn't included in the installation and so I had to install it, which I googled (as I've been doing with virtually everything), and I then had trouble connecting to github because of the need for a PAT (Personal Authentication Token), or PAT. I found the PAT solution to be ... onerous. Too many things to link up and I didn't like that they expire -- which would mean yet another thing I'd need to keep track of... so forget that. But SSH (Secure Shell Protocol) was another option and I went with that. Then this happened:  
@@ -119,3 +141,8 @@ I ran the command a second time just because...that's what rookies do I guess...
 This worked ... sort of. The page and left column render ... but not text from content folder. Looked at page source of the newly created/rendered index.html file in the browser and see that there's a hanging </div> tag. Tells me I need to fix html in one of my templates. 
 
 4. Deleted the hanging <\/div> ... but still no success. :(  Hmmm... everything looks good on the face of it... but I need to use a print statement to see what my `index` variable looks like in my python file to see how it's concatening the files and why ./content/index.html isn't in there. And of course ... validation! That content is missing from print statement just like in the rendered file. I must have the filepath wrong. ... but no, my index.html file was empty! Even though I had it in my text editor with text. I closed that file in teh text editor and, of course, just like happened over the weekend when I overwrote all my files with git...I couldn't find it anymore. AGain, no biggie, since I didn't have much I"d written in that file anyway. Now it all works! Time to write the next pages on the site... 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
