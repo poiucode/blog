@@ -126,3 +126,6 @@ This worked ... sort of. The page and left column render ... but not text from c
 Woke up this morning to begin work on the PR's -- for bash and python site generators. Now...I've already wired up my site and got those working, so I'm doing this a bit backwards. But no worries, I've done other changes (like update this file) that I can do for the pull request to get that practice. 
 1. I created branch ssg-bash and then a PR on github. But when ready to merge, there's no merge button ... just a "Compare and pull request". I hopped around my page on github but no merge button or option anywhere. So I merged locally. will see what looks like on the next push
 2. 
+
+## July 13
+  
