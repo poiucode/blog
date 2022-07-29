@@ -6,22 +6,24 @@ def main():
     # loop through blueprint dir and build page 
         # loop through pages[] and insert correct pagechdir into input directory
     
-    # this is going to hold each page as it's built
-    temp = '' 
+        
+    # loop through pages in pages dictionary
     for page in files.pages:
+        # this is going to hold each page as it's built
+        temp = '' 
+
         # build the page from the templates
-        for template in files.blueprints:
-            if fnmatch.filter(template, '1*'):
+        for template in files.blueprints: 
+            if fnmatch.filter(template, '3*'):
                 temp += open(files.input + page['filename']).read() 
-                # print(temp)
-                temp.replace('{{title}}', page['title'])
-            # Plug in the content
-            if template == '3_None':
-                temp += open(files.input + page['filename']).read() 
-            temp += open(template).read() 
+    
+                #temp += temp.replace('{{title}}', page['title'])
+            else: 
+                temp += open(template).read() 
+            
             # write the page to content folder
             open(files.output + page['filename'], 'w').write(temp)
-    
+
     
 main()
 

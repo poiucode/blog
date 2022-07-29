@@ -1,6 +1,3 @@
-<h1> Welcome! </h1>
-
-<p> This site is built from a simple static site generator using HTML, Bootstrap 5, a little custom CSS, and Python. 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,12 +20,7 @@
                   <li><a href="contact.html">Contact</a></li>
               </ol>
           </div>
-          <div class="col-sm-8">   
-            </div>
-        </div>
-    </div>
-</body>
-</html># Notes from the Keyboard
+          <div class="col-sm-8">  # Notes from the Keyboard
 
 ## June 23 
 So I installed ubuntu on my chromebook in a separate partition. Followed instructions from the unbuntu site [here](https://ubuntu.com/tutorials/install-ubuntu-on-chromebook#1-overview). git wasn't included in the installation and so I had to install it, which I googled (as I've been doing with virtually everything), and I then had trouble connecting to github because of the need for a PAT (Personal Authentication Token), or PAT. I found the PAT solution to be ... onerous. Too many things to link up and I didn't like that they expire -- which would mean yet another thing I'd need to keep track of... so forget that. But SSH (Secure Shell Protocol) was another option and I went with that. Then this happened:  
@@ -158,30 +150,7 @@ Woke up this morning to begin work on the PR's -- for bash and python site gener
 2. 
 
 ## July 13
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-    <title>{{title}}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../docs/css/style.css" rel="stylesheet">
-</head><body>
-    <div class="container">
-      <div class="row">
-        <h1>Say hello to my little blog!</h1>
-      </div>
-      <div class="row">
-          <div class="col">
-              <ol class="list-unstyled">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="blog.html">Blog</a></li>
-                  <li><a href="contact.html">Contact</a></li>
-              </ol>
-          </div>
-          <div class="col-sm-8">   
-            </div>
+              </div>
         </div>
     </div>
 </body>
