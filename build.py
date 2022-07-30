@@ -3,24 +3,26 @@ import fnmatch
 
 
 def main():
-    # loop through blueprint dir and build page 
-        # loop through pages[] and insert correct pagechdir into input directory
-    
+    # Loops through page dictionary from files object and based on concatenated strings, accesses the file
+    # Site based on a template built from 3 parts in Blueprints (head,nav,and footer) folder 
+    # With the actual page content pulled from Content folder. 
+    # Notes.md doesn't work yet since it's markdown and github pages doesn't have. This will be enabled with Jinja
         
     # loop through pages in pages dictionary
     for page in files.pages:
-        # this is going to hold each page as it's built
+        
+        # Store each page as it's built
         temp = '' 
 
         # build the page from the templates
         for template in files.blueprints: 
             if fnmatch.filter(template, '3*'):
                 temp += open(files.input + page['filename']).read() 
-    
-                #temp += temp.replace('{{title}}', page['title'])
             else: 
                 temp += open(template).read() 
             
+            # replace <title>
+            temp = temp.replace('{{title}}', page['title'])
             # write the page to content folder
             open(files.output + page['filename'], 'w').write(temp)
 
@@ -28,7 +30,7 @@ def main():
 main()
 
 '''
-    # moving original code here to start off 
+    # This is the original code so you see how each page is actually built 
     index = open("./blueprints/head.html").read()
     index += open("./blueprints/nav.html").read()
     index += open("./content/index.html").read()
