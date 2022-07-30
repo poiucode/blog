@@ -16,7 +16,7 @@
           <div class="col">
               <ol class="list-unstyled">
                   <li><a href="index.html">Home</a></li>
-                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="notes.md">Blog</a></li>
                   <li><a href="contact.html">Contact</a></li>
               </ol>
           </div>
@@ -147,9 +147,16 @@ This worked ... sort of. The page and left column render ... but not text from c
 ## July 3
 Woke up this morning to begin work on the PR's -- for bash and python site generators. Now...I've already wired up my site and got those working, so I'm doing this a bit backwards. But no worries, I've done other changes (like update this file) that I can do for the pull request to get that practice. 
 1. I created branch ssg-bash and then a PR on github. But when ready to merge, there's no merge button ... just a "Compare and pull request". I hopped around my page on github but no merge button or option anywhere. So I merged locally. will see what looks like on the next push
-2. 
 
-## July 13
+
+## July 26
+Put in a few hours building the structure of the site using an object with attributes and a method, found the glob function online to solve problem of how can I get a list of my filepaths, and learned to import an object into another file. This is most progress in weeks! 
+
+## July 29
+Got site almost working except for replace function and I pushed to github right before meeting with Michael B. We talked about fixing the replace() to get working, simplifying code, and he reminded me about startswith() as a more readable (and common) alternative to  fnmatch.filter() 
+
+## July 30 
+Got site working with replace, refactored more, and in good spot! Onto next lessons to prep for HW4!! 
               </div>
         </div>
     </div>
