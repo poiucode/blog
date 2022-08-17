@@ -1,8 +1,9 @@
 # Deprecated
-# The idea behind this page was to build a files object which would build each page by appending a few templates to each other
-# These templates were snippets of html 
-# This was done before working with jinja and so in the end, realized there's no need to do this because I could put the entire html
-# in the base.html file and change up certain sections with child templates
+# The idea behind this page was to build a files object which would build each page by appending a few "templates" to each other
+# ... but these templates were actually just html snippets so this was all basically just a complicated way of concatenating files
+# This was done before working with jinja. 
+# In the end, I realized there's no need to do this because I could put the entire html in the base.html file then change up certain 
+# sections (e.g. nav/footer) using child templates
 
 import glob, json, os
 

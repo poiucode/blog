@@ -1,3 +1,7 @@
+# DEPRECATED
+# This is the 2nd version of site (the first is commented out at bottom) and concatenated files and used replace() function
+# Very simple 'templating' system
+
 from files import (files)
 import fnmatch
  

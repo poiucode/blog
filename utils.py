@@ -38,19 +38,21 @@ pages = [
     },
 ]
 
-                            
+# cycle through the pages list                            
 for page in pages:
-    # consider assigning each template from the context
+    # use get_template(), which accesses /templates, and pulls in the template file using 'template' name within the current dict 
     template = env.get_template(f"{page['template']}.html")
+    # render() takes in either a dict or a string. In this case, we pass in the dict and it does the work for us
     context = template.render(
         page        
     )
+    # Having just accessed our jinja template, we now prepare the output files in docs_filename variables                              
     if page['template'] == 'index':
         docs_filename = "./docs/index.html"
     else: 
         docs_filename = f"./docs/{page['template']}.html"    
                                 
-    # have filename be the outputted file in docs folder   
-    with open(docs_filename, mode="w", encoding="utf-8") as message:
-        message.write(context)
+    # here's the output logic  
+    with open(docs_filename, mode="w", encoding="utf-8") as output:
+        output.write(context)
     # print(f"... wrote {filename}")

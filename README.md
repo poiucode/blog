@@ -1,5 +1,11 @@
-Here's how to get this site working after you've cloned/forked this repo:
+## How this works
+This site is built with HTML/CSS/Bootstrap, Python, and Jinja, a Python templating system. 
 
-Python: in terminal run `python3 build.py` 
+The logic lives in `utils.py` in the main `/blog` directory (which contains all the files/folders. 
 
-Each page on this simple site is built with a template. Read the top comments in `build.py` to see how it's done. 
+## How to build this site
+
+1. clone/fork repo on your computer
+2. Open interactive prompt: `python` if python2; `python3` if python3
+3. `python utils.py` or `python3 utils.py` to build the site 
+
