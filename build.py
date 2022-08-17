@@ -1,6 +1,6 @@
 from files import (files)
 import fnmatch
-
+ 
 
 def main():
     # Loops through page dictionary from files object and based on concatenated strings, accesses the file
@@ -8,7 +8,7 @@ def main():
     # With the actual page content pulled from Content folder. 
     # Notes.md doesn't work yet since it's markdown and github pages doesn't have. This will be enabled with Jinja
         
-    # loop through pages in pages dictionary
+    # loop through pages in pages dictionary and build each page, below
     for page in files.pages:
         
         # Store each page as it's built
