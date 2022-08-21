@@ -45,12 +45,6 @@ pages = [
 navbar = ''
 for page in pages: 
     navbar += f"<li><a href='{page['url']}'>{page['title']}</a></li>"
-    print(navbar)
-'''
-    navbar.append({
-        'link': page['url'],
-        'link_title': page['title']
-    })'''
     
 # cycle through the pages list to build the output files                         
 for page in pages:
