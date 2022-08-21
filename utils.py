@@ -42,18 +42,21 @@ pages = [
 ]
 
 # build navbar
-navbar = []
+navbar = ''
 for page in pages: 
+    navbar += f"<li><a href='{page['url']}'>{page['title']}</a></li>"
+    print(navbar)
+'''
     navbar.append({
         'link': page['url'],
         'link_title': page['title']
-    })
+    })'''
     
 # cycle through the pages list to build the output files                         
 for page in pages:
-    # use get_template(), which accesses /templates, and pulls in the template file using 'template' name within the current dict 
+    # get_template() accesses child templates from /templates using current dict 
     template = env.get_template(f"{page['template']}.html")
-    # render() takes in either a dict or a string. In this case, we pass in the dict and it does the work for us
+    # render() takes in either a dict or a string. In this case, we pass each from list 
     context = template.render(page, navbar=navbar)
     # Having just accessed our jinja template, we now prepare the output files in docs_filename variables                              
     if page['template'] == 'index':
@@ -66,5 +69,5 @@ for page in pages:
         output.write(context)
     # print(f"... wrote {filename}")
 
-                                
+# print(navbar)                                
 print("files created")
