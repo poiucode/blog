@@ -15,53 +15,61 @@ env = Environment(loader=FileSystemLoader("templates/"))
     print(t.render(name="World"))
 '''
 
+#######################
+# BUILD A CLASS FROM BELOW AND have manage.py import object from here
+#######################
 
 #  a list of dicts with each being components of a template
-pages = [
-    {
-        'template'  : 'index',
-        'title': 'Home',
-        'url': 'index.html',
-        'heading': 'Say hello to my little blog!',
-        'content': "Welcome to a small templated blog",
-    },
-    {
-        'template'  : 'blog',
-        'title': 'Blog',
-        'url': 'blog.html',
-        'heading': 'Blog',
-        'content': "", # pull as list of items from separate file    
-    },
-    {
-        'template'  : 'contact',
-        'title': 'Contact',
-        'url': 'contact.html',
-        'heading': 'Say hello!',
-        'content': "Submit a pr and I'll get back to you",    
-    },  
-]
+def pages(): 
+    pages = [
+        {
+            'template'  : 'index',
+            'title': 'Home',
+            'url': 'index.html',
+            'heading': 'Say hello to my little blog!',
+            'content': "Welcome to a small templated blog",
+        },
+        {
+            'template'  : 'blog',
+            'title': 'Blog',
+            'url': 'blog.html',
+            'heading': 'Blog',
+            'content': "", # pull as list of items from separate file    
+        },
+        {
+            'template'  : 'contact',
+            'title': 'Contact',
+            'url': 'contact.html',
+            'heading': 'Say hello!',
+            'content': "Submit a pr and I'll get back to you",    
+        },  
+    ]
+    return pages
 
 # build navbar
-navbar = ''
-for page in pages: 
-    navbar += f"<li><a href='{page['url']}'>{page['title']}</a></li>"
+def navbar(pages=pages()):
+    navbar = ''
+    for page in pages: 
+        navbar += f"<li><a href='{page['url']}'>{page['title']}</a></li>"
+    return navbar
     
 # cycle through the pages list to build the output files                         
-for page in pages:
-    # get_template() accesses child templates from /templates using current dict 
-    template = env.get_template(f"{page['template']}.html")
-    # render() takes in either a dict or a string. In this case, we pass each from list 
-    context = template.render(page, navbar=navbar)
-    # Having just accessed our jinja template, we now prepare the output files in docs_filename variables                              
-    if page['template'] == 'index':
-        docs_filename = "./docs/index.html"
-    else: 
-        docs_filename = f"./docs/{page['template']}.html"    
-                                
-    # here's the output logic  
-    with open(docs_filename, mode="w", encoding="utf-8") as output:
-        output.write(context)
-    # print(f"... wrote {filename}")
+def page_builder(pages=pages(), navbar=navbar()):
+    for page in pages:
+        # get_template() accesses child templates from /templates using current dict 
+        template = env.get_template(f"{page['template']}.html")
+        # render() takes in either a dict or a string. In this case, we pass each from list 
+        context = template.render(page, navbar=navbar)
+        # Having just accessed our jinja template, we now prepare the output files in docs_filename variables                              
+        if page['template'] == 'index':
+            docs_filename = "./docs/index.html"
+        else: 
+            docs_filename = f"./docs/{page['template']}.html"    
+
+        # here's the output logic  
+        with open(docs_filename, mode="w", encoding="utf-8") as output:
+            output.write(context)
+        # print(f"... wrote {filename}")
 
 # print(navbar)                                
-print("files created")
+print("files created; utils works")
