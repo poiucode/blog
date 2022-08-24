@@ -37,7 +37,6 @@ def pages():
     return pages
 
 # TODO
-# 1. open pages in navbar() and build the navbar with a loop
 # 2. open content in page_builder() and populate within pages
 # 3. restructure notes file so the posts are a list of dicts 
 
