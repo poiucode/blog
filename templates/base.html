@@ -22,7 +22,9 @@
       <div class="row">
           <div class="col">
               <ol class="list-unstyled">
-                {{ navbar }}
+                {% for page in pages %}
+                  <li><a href="{{page.url}}">{{ page.title }}</a></li>
+                {% endfor %}
               </ol>
           </div>
           <div class="col-sm-8">  

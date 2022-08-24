@@ -1,4 +1,4 @@
-import os
+import os, glob
 from jinja2 import Environment, PackageLoader, FileSystemLoader, select_autoescape
 
 ''' 
@@ -9,17 +9,7 @@ from jinja2 import Environment, PackageLoader, FileSystemLoader, select_autoesca
 
 env = Environment(loader=FileSystemLoader("templates/"))
 
-''' 
-    # FileSystemLoader test: passes
-    t = env.from_string("Hello, {{ name }}!")
-    print(t.render(name="World"))
-'''
-
-#######################
-# BUILD A CLASS FROM BELOW AND have manage.py import object from here
-#######################
-
-#  a list of dicts with each being components of a template
+#  List of dicts, each a component of a template
 def pages(): 
     pages = [
         {
@@ -46,22 +36,19 @@ def pages():
     ]
     return pages
 
-# build navbar
-def navbar(pages=pages()):
-    navbar = ''
-    for page in pages: 
-        navbar += f"<li><a href='{page['url']}'>{page['title']}</a></li>"
-    return navbar
-    
+# TODO
+# 1. open pages in navbar() and build the navbar with a loop
+# 2. open content in page_builder() and populate within pages
+# 3. restructure notes file so the posts are a list of dicts 
+
+
 # cycle through the pages list to build the output files                         
-def page_builder(pages=pages(), navbar=navbar()):
+def page_builder(pages=pages()): 
     for page in pages:
-        # get_template() accesses child templates from /templates using current dict 
-        template = env.get_template(f"{page['template']}.html")
-        # render() takes in either a dict or a string. In this case, we pass each from list 
-        context = template.render(page, navbar=navbar)
-        # Having just accessed our jinja template, we now prepare the output files in docs_filename variables                              
-        if page['template'] == 'index':
+        template = env.get_template(f"{page['template']}.html") # get_template() accesses child templates from /templates 
+        context = template.render(page, pages=pages) # render() takes in a dict or string
+                                    
+        if page['template'] == 'index':          # prepare the output files in docs_filename variables                              
             docs_filename = "./docs/index.html"
         else: 
             docs_filename = f"./docs/{page['template']}.html"    
