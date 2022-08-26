@@ -1,4 +1,4 @@
-import os, glob
+import os, glob, re
 from jinja2 import Environment, PackageLoader, FileSystemLoader, select_autoescape
 
 ''' 
@@ -9,40 +9,33 @@ from jinja2 import Environment, PackageLoader, FileSystemLoader, select_autoesca
 
 env = Environment(loader=FileSystemLoader("templates/"))
 
-#  List of dicts, each a component of a template
-def pages(): 
-    pages = [
-        {
-            'template'  : 'index',
-            'title': 'Home',
-            'url': 'index.html',
-            'heading': 'Say hello to my little blog!',
-            'content': "Welcome to a small templated blog",
-        },
-        {
-            'template'  : 'blog',
-            'title': 'Blog',
-            'url': 'blog.html',
-            'heading': 'Blog',
-            'content': "", # pull as list of items from separate file    
-        },
-        {
-            'template'  : 'contact',
-            'title': 'Contact',
-            'url': 'contact.html',
-            'heading': 'Say hello!',
-            'content': "Submit a pr and I'll get back to you",    
-        },  
-    ]
+def index_check(tag):
+    if tag == 'index':
+        return 'Home'
+    else: 
+        return tag
+
+def write_file(item):
+    f = open(item).read()
+    return f
+    
+def get_content():
+    pages = []
+    content = glob.glob('./content/*')
+    for item in content:
+        tag = (item.split('/')[-1])[:-5]
+        pages.append({
+            'template': tag,
+            'title': index_check(tag),
+            'url': tag + '.html',
+            'heading': index_check(tag),
+            'content': write_file(item)  # open file and write to variable
+         })
+
     return pages
-
-# TODO
-# 2. open content in page_builder() and populate within pages
-# 3. restructure notes file so the posts are a list of dicts 
-
-
+    
 # cycle through the pages list to build the output files                         
-def page_builder(pages=pages()): 
+def page_builder(pages=get_content()): 
     for page in pages:
         template = env.get_template(f"{page['template']}.html") # get_template() accesses child templates from /templates 
         context = template.render(page, pages=pages) # render() takes in a dict or string
@@ -55,7 +48,3 @@ def page_builder(pages=pages()):
         # here's the output logic  
         with open(docs_filename, mode="w", encoding="utf-8") as output:
             output.write(context)
-        # print(f"... wrote {filename}")
-
-# print(navbar)                                
-print("files created; utils works")
