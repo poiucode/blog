@@ -15,7 +15,7 @@ def index_check(tag):
     else: 
         return tag
 
-def write_file(item):
+def read_file(item):
     f = open(item).read()
     return f
     
@@ -26,10 +26,10 @@ def get_content():
         tag = (item.split('/')[-1])[:-5]
         pages.append({
             'template': tag,
-            'title': index_check(tag),
+            'title': index_check(tag).capitalize(),
             'url': tag + '.html',
-            'heading': index_check(tag),
-            'content': write_file(item)  # open file and write to variable
+            'heading': index_check(tag).capitalize(),
+            'content': read_file(item)  # open file and write to variable
          })
 
     return pages
@@ -39,11 +39,8 @@ def page_builder(pages=get_content()):
     for page in pages:
         template = env.get_template(f"{page['template']}.html") # get_template() accesses child templates from /templates 
         context = template.render(page, pages=pages) # render() takes in a dict or string
-                                    
-        if page['template'] == 'index':          # prepare the output files in docs_filename variables                              
-            docs_filename = "./docs/index.html"
-        else: 
-            docs_filename = f"./docs/{page['template']}.html"    
+                                     
+        docs_filename = f"./docs/{page['template']}.html"    
 
         # here's the output logic  
         with open(docs_filename, mode="w", encoding="utf-8") as output:

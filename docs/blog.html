@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     
-    <title>blog</title>
+    <title>Blog</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../docs/css/style.css" rel="stylesheet">
@@ -16,7 +16,7 @@
     <div class="container">
       <div class="row">
         
-        <h1>blog</h1>
+        <h1>Blog</h1>
          
       </div>
       <div class="row">
@@ -25,9 +25,9 @@
                 
                   <li><a href="index.html">Home</a></li>
                 
-                  <li><a href="contact.html">contact</a></li>
+                  <li><a href="contact.html">Contact</a></li>
                 
-                  <li><a href="blog.html">blog</a></li>
+                  <li><a href="blog.html">Blog</a></li>
                 
               </ol>
           </div>
@@ -175,7 +175,10 @@ Got site working with replace, refactored more, and in good spot! Onto next less
 <ul>
 <li> I initially built an overly complicated function that essentially used glob to iterate through files in a folder, and then concatenate the text in each file. In other words, it was sort of a Rube Goldberg string-from-file concatenating machine. It was built prior to using Jinja and once I began using jinja, I understood how my "filebuilder" was unnecessary. It's accessible in earlier versions in git. </li>
 <li>The power of Jinja is that it can pass in a dictionary and then automatically iterate through it and plug in values from the dictionary into a template by matching the tags in the template to the keys in the dictionary. It took a couple days to get things working but I ultimately created a <code>pages</code> dict which I looped through, grabbed each key which was a different expression in the template, and then built an output file from the dictionary inputs.<p>The problem with that was that I hardcoded the filenames etc and it wasn't DRY. </p>
-<li> So overthe last couple days I've done a lot to finalize this site generator. I automated pages so that it globs the ./content folder, loops through each file, grabs the relevant filename, and then populates a dictionary in a list matching that page as well as grabbing the content from the content file and plugging it into the related key via a <code>write_file()</code> function (p.s. I think read_file() would have been more apropos...but I didn't feel like going back to modify). 
+<li> So overthe last couple days I've done a lot to finalize this site generator. I automated pages so that it globs the ./content folder, loops through each file, grabs the relevant filename, and then builds a dictionary appended to a list matching that page, as well as grabbing the content from the content file and plugging it into the related key via a <code>write_file()</code> function within that same dictionary (p.s. I think read_file() would have been more apropos...but I didn't feel like going back to modify).
+
+</li>
+
 </ul>
 
               
