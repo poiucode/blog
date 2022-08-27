@@ -1,4 +1,4 @@
-import os, glob, re
+import os, glob
 from jinja2 import Environment, PackageLoader, FileSystemLoader, select_autoescape
 
 ''' 
@@ -21,17 +21,17 @@ def read_file(item):
     
 def get_content():
     pages = []
-    content = glob.glob('./content/*')
-    for item in content:
-        tag = (item.split('/')[-1])[:-5]
+    folder = glob.glob('./content/*')
+    for path in folder:
+        file_name = os.path.basename(path)
+        name_only, extension = os.path.splitext(file_name)
         pages.append({
-            'template': tag,
-            'title': index_check(tag).capitalize(),
-            'url': tag + '.html',
-            'heading': index_check(tag).capitalize(),
-            'content': read_file(item)  # open file and write to variable
+            'template': name_only,
+            'title': index_check(name_only).capitalize(),
+            'url': file_name,
+            'heading': index_check(name_only).capitalize(),
+            'content': read_file(path)  # open file and write to variable
          })
-
     return pages
     
 # cycle through the pages list to build the output files                         
